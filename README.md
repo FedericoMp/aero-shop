@@ -1,21 +1,15 @@
-![React Logo](https://github.com/vercel/vercel/blob/master/packages/frameworks/logos/react.svg)
+# Aero Shop
 
-# React Example
+React.js SPA to solve a code challenge. The js web components based app is built to simulate an e-commerce whose main goal is to help users redeem items through a points-based system.
 
-This directory is a brief example of a [React](https://reactjs.org/) app with [Serverless Functions](https://vercel.com/docs/v2/serverless-functions/introduction) that can be deployed with Vercel and zero configuration.
+## 💼 &nbsp;Technologies & Concepts
 
-## Deploy Your Own
+![](https://img.shields.io/static/v1?label=Mobile&nbsp;First&message=✓&color=009688)
+![](https://img.shields.io/static/v1?label=Responsive&message=✓&color=009688)
 
-Deploy your own React project, along with Serverless Functions, with Vercel.
+![](https://img.shields.io/static/v1?label=Web&nbsp;Components&message=✓&color=009688)
+![](https://img.shields.io/static/v1?label=SPA&nbsp;App&message=✓&color=009688)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/create-react-app-functions&template=create-react-app)
-
-_Live Example: https://create-react-app.now-examples.now.sh/_
-
-### How We Created This Example
-
-To get started with React, along with [Serverless Functions](https://vercel.com/docs/v2/serverless-functions/introduction), with Vercel, you can use the [Create-React-App CLI](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) to initialize the project:
-
-```shell
-$ npx create-react-app my-app
-```
+![](https://img.shields.io/badge/Code-HTML-informational?style=flat&logo=html5&logoColor=white&color=ff9800)
+![](https://img.shields.io/badge/Style-CSS-informational?style=flat&logo=css3&logoColor=white&color=168dec)
+![](https://img.shields.io/badge/Code-React.js-informational?style=flat&logo=react&logoColor=white&color=48c7f9)
