@@ -13,7 +13,7 @@ const apiConfig = {
  * @param {string} endpoint
  * @param {string} method
  * @param {Object} data
- * @returns {Promise} Promise object with the resources
+ * @returns {Promise} Promise object with the resources or an error
  */
 function baseReq(endpoint, method, data) {
     return fetch(`${apiConfig.API_BASE_URL}/${endpoint}`, {
@@ -21,7 +21,8 @@ function baseReq(endpoint, method, data) {
         headers: apiConfig.API_HEADERS,
         body: JSON.stringify(data) || null
     })
-    .then(res => res.json());  
+    .then(res => res.json())
+    .catch(err => err);
 }
 
 export { apiConfig, baseReq };

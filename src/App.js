@@ -1,23 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Home, Profile, NotFound } from './pages';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <Router>
-      {/* Basic navbar */}
-      <ul>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/profile'>Profile</Link>
-        </li>
-      </ul>
-      
+      {/* Header Navbar */}
+      <Navbar/>
+
       <main>
-        React App
-        {/* Basic switch */}
         <Switch>
           <Route exact path='/'>
             <Home/>
@@ -29,7 +21,6 @@ function App() {
             <NotFound/>
           </Route>
         </Switch>
-      
       </main>
     </Router>
   );
