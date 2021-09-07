@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import UserInfo from './UserInfo';
 import { Link } from 'react-router-dom';
@@ -33,16 +34,18 @@ const Navbar = () => {
             <AppBar 
                 position="static" 
                 className={classes.appbar}>
-                <Toolbar>
-                    <Link to='/' className={classes.link}>
-                        <img className={classes.logo} 
-                            src="../img/aerolab-logo.svg" alt="Aero-Shop"/>
-                    </Link>
-                    <div className={classes.space}></div>
-                    <Link to='/profile' className={classes.link}>
-                        <UserInfo/>
-                    </Link>
-                </Toolbar>
+                <Container>
+                    <Toolbar>
+                        <Link to='/' className={classes.link}>
+                            <img className={classes.logo} 
+                                src="../img/aerolab-logo.svg" alt="Aero-Shop"/>
+                        </Link>
+                        <div className={classes.space}></div>
+                        <Link to='/profile' className={classes.link}>
+                            <UserInfo/>
+                        </Link>
+                    </Toolbar>
+                </Container>
             </AppBar>
         </div>
     )
