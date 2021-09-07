@@ -2,11 +2,11 @@
  * A module that exports all request functions
  * @module requests
  */
-import getUser from './user';
-import postUserPoints from './points';
-import getUserHistory from './history';
-import postRedeem from './redeem';
-import getProducts from './products';
+import getUser from './getUser';
+import postUserPoints from './postUserPoints';
+import getUserHistory from './getUserHistory';
+import postRedeem from './postRedeem';
+import getProducts from './getProducts';
 
 export { 
     getUser, 

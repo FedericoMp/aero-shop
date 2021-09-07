@@ -6,3 +6,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+/* Profile image moddify */
+@media screen and (max-width: 600px) {
+  img.makeStyles-profile-20 {
+    opacity: 0.1;
+    top: 10px;
+    right: -10px;
+  }
+}
+@media screen and (min-width: 900px) {
+  img.makeStyles-profile-20 {
+    width: 560px;
+    bottom: -130px;
+  }
+}

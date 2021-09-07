@@ -36,9 +36,12 @@ const UserInfo = () => {
     const [user, setUser] = useState({});
     const {name, points} = user;
 
+    // To fix
+    // Commented dependency User - continuous api call
     useEffect(() => {
         getUser().then(res => setUser(res))
-    }, [user]);
+    }, []);
+    // }, [user]);
 
     return (
         <div className={classes.root}>
