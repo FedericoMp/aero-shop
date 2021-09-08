@@ -41,14 +41,6 @@ const useStyles = makeStyles({
     },
     coin: {
         fill: '#ff7e00'
-    },
-    profile: {
-        position: 'absolute',
-        right: '0',
-        bottom: '-30px',
-        width: '360px',
-        zIndex: '-2'
-
     }
 });
 
@@ -94,7 +86,7 @@ const ProfileInfo = () => {
                     <Typography variant="body1">{points}</Typography>
             </div>
 
-            <img className={classes.profile}
+            <img className='profileImg'
                 src="../img/winners.svg" alt="Profile" />
         </div>
     )

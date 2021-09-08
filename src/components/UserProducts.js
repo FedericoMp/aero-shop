@@ -8,16 +8,12 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { getUser } from '../middleware/requests';
 
 const useStyles = makeStyles({
     table: {
         minWidth: 650,
-    },
-    container: {
-        marginTop: '50px'
     },
     notProductMsj: {
         textAlign: 'center',
@@ -40,7 +36,7 @@ const UserProducts = () => {
     // }, [user]);
 
     return (
-        <Container className={classes.container}>
+        <div className='productsContainer'>
         {
             (!redeemHistory)
                 ? (
@@ -81,7 +77,7 @@ const UserProducts = () => {
                     </TableContainer>
                 )
         }
-        </Container>
+        </div>
     )
 }
 

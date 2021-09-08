@@ -7,17 +7,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* Profile image moddify */
+/* Profile image and container moddify */
+img.profileImg {
+  opacity: 0.1;
+  position: absolute;
+  right: 0px;
+  bottom: -30px;
+  width: 360px;
+  z-Index: -2;
+}
+.productsContainer {
+  margin-top: 50px;
+}
 @media screen and (max-width: 600px) {
-  img.makeStyles-profile-20 {
-    opacity: 0.1;
+  img.profileImg {
     top: 10px;
     right: -10px;
   }
 }
 @media screen and (min-width: 900px) {
-  img.makeStyles-profile-20 {
+  img.profileImg {
     width: 560px;
     bottom: -130px;
+  }
+  .productsContainer {
+    margin-top: 150px;
   }
 }
