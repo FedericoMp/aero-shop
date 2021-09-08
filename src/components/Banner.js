@@ -5,15 +5,13 @@ import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
     root: {
-        width: '100%',
-        height: '480px',
+        backgroundImage: `url('../img/hero.png')`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
         position: 'relative',
-        backgroundColor: '#15dbff'
-    },
-    bgImage: {
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover'
+        height: '480px',
+        width: '100%'
     },
     bannerText: {
         position: 'absolute',
@@ -29,9 +27,6 @@ const Banner = ({text}) => {
 
     return (
         <div className={classes.root}>
-            <img src="../img/hero.png" 
-                alt={text} 
-                className={classes.bgImage}/>
             <Typography 
                 variant='h3'
                 className={classes.bannerText}>
