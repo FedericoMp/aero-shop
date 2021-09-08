@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import { makeStyles } from '@material-ui/core';
-import { getUser } from '../middleware/requests';
 import { nameInitial, parseDate } from '../utils';
+import { useAppContext } from '../provider/AppProvider';
 
 const useStyles = makeStyles({
     root: {
@@ -47,43 +47,37 @@ const useStyles = makeStyles({
 const ProfileInfo = () => {
 
     const classes = useStyles();
-    const [user, setUser] = useState({});
-    const {name, points, createDate} = user;
-
-    // To fix
-    // Commented dependency User - continuous api call
-    useEffect(() => {
-        getUser().then(res => setUser(res))
-    }, []);
-    // }, [user]);
+    // Use custom hook to take data from global state by reducer
+    const { user } = useAppContext();
+    const { name, points, createDate } = user;
 
     return (
         <div className={classes.root}>
             <div className={classes.nameWrap}>
-                    {
-                        (name)
-                        ? <Avatar className={classes.avatar}>{nameInitial(name)}</Avatar>
-                        : null
-                    }
-                    <Typography variant='h5'>{name}</Typography>
+                {
+                    (name)
+                    ? <Avatar className={classes.avatar}>{nameInitial(name)}</Avatar>
+                    : null
+                }
+                <Typography variant='h5'>{name}</Typography>
             </div>
 
             <div className={classes.dateWrap}>
-                    <Typography 
-                        variant='caption' 
-                        className={classes.captionDate}>
-                            Created at</Typography>
-                    <Typography variant='subtitle2'>{parseDate(createDate)}</Typography>
+                <Typography 
+                    variant='caption' 
+                    className={classes.captionDate}>
+                        Created at</Typography>
+                <Typography variant='subtitle2'>{parseDate(createDate)}</Typography>
             </div>
 
             <div className={classes.pointsWrap}>
-                    <Typography 
-                        variant='caption'
-                        className={classes.captionPoint}>
-                            You have</Typography>
-                    <MonetizationOnIcon 
-                        className={classes.coin}/>
-                    <Typography variant="body1">{points}</Typography>
+                <Typography 
+                    variant='caption'
+                    className={classes.captionPoint}>
+                        You have</Typography>
+                <MonetizationOnIcon 
+                    className={classes.coin}/>
+                <Typography variant="body1">{points}</Typography>
             </div>
 
             <img className='profileImg'

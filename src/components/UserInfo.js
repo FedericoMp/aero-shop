@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { getUser } from '../middleware/requests';
+import { useAppContext } from '../provider/AppProvider';
 
 const useStyles = makeStyles({
     root: {
@@ -33,15 +33,9 @@ const useStyles = makeStyles({
 const UserInfo = () => {
     
     const classes = useStyles();
-    const [user, setUser] = useState({});
-    const {name, points} = user;
-
-    // To fix
-    // Commented dependency User - continuous api call
-    useEffect(() => {
-        getUser().then(res => setUser(res))
-    }, []);
-    // }, [user]);
+    // Use custom hook to take data from global state by reducer
+    const { user } = useAppContext();
+    const { name, points } = user;
 
     return (
         <div className={classes.root}>
