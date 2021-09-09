@@ -2,10 +2,12 @@ import React from 'react';
 import Banner from '../components/Banner';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
+import DataFilter from '../components/DataFilter';
 
 const useStyles = makeStyles({
     root: {
-        width: '100%'
+        width: '100%',
+        backgroundColor: '#fbfbfb'
     }
 });
 
@@ -20,7 +22,7 @@ export default function Home() {
         <div className={classes.root}>
             <Banner text='Electronics'/>
             <Container>
-                Home
+                <DataFilter/>
             </Container>
         </div>
     )

@@ -1,0 +1,38 @@
+div.data-filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+div.data-filter > p.text > span.text-total {
+    color: #7d7d7d;
+}
+div.data-filter > p.text > span.text-separator {
+    margin: 0 5px 0 10px;
+    color: #cacaca;
+}
+div.data-filter > p.text > span.text-sort {
+    margin: 0 5px;
+    color: #cacaca;
+}
+
+div.data-filter > div.btn-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+div.data-filter > div.btn-wrap > form.form {
+    display: flex;
+}
+
+div.data-filter > div.btn-wrap > form.form > div.radio-wrap:nth-child(2n) {
+    margin: 0 10px;
+}
+
+@media screen and (max-width: 645px) {
+    div.data-filter {
+        flex-direction: column;
+    }
+}

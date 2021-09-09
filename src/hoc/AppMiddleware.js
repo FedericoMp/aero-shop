@@ -11,15 +11,15 @@ const AppMiddleware = () => {
                 <Navbar/>
                 <main>
                     <Switch>
-                    <Route exact path='/'>
-                        <Home/>
-                    </Route>
-                    <Route exact path='/profile'>
-                        <Profile/>
-                    </Route>
-                    <Route path='*'>
-                        <NotFound/>
-                    </Route>
+                        <Route exact path='/'>
+                            <Home/>
+                        </Route>
+                        <Route exact path='/profile'>
+                            <Profile/>
+                        </Route>
+                        <Route path='*'>
+                            <NotFound/>
+                        </Route>
                     </Switch>
                 </main>
             </Router>
