@@ -1,7 +1,9 @@
 div.data-filter {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
     justify-content: space-around;
+    border-bottom: 1px solid #d2d2d2;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
@@ -35,4 +37,12 @@ div.data-filter > div.btn-wrap > form.form > div.radio-wrap:nth-child(2n) {
     div.data-filter {
         flex-direction: column;
     }
+}
+
+img.arrow {
+    width: 30px;
+    margin: 20px 0;
+}
+img.arrow.turned {
+    transform: rotate(180deg);
 }

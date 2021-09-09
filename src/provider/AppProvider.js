@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useReducer } from 'react';
 import { getUser, getProducts, getUserHistory } from '../middleware/requests';
+import { REDUCER_TYPES } from '../constants';
 
 // App Context
 const AppContext = React.createContext();
@@ -14,19 +15,19 @@ const initialState = {
 // Reducer function that moddify the state
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'GET_USER': {
+        case REDUCER_TYPES.getUser: {
             return {
                 ...state,
                 user: action.value
             }
         };
-        case 'GET_PRODUCTS': {
+        case REDUCER_TYPES.getProducts: {
             return {
                 ...state,
                 products: action.value
             }
         };
-        case 'GET_USER_HISTORY': {
+        case REDUCER_TYPES.getUserHistory: {
             return {
                 ...state,
                 history: action.value
@@ -48,11 +49,11 @@ const AppProvider = ({children}) => {
 
     useEffect(() => {
         getUser()
-            .then(userData => dispatch({ type: 'GET_USER', value: userData}));
+            .then(userData => dispatch({ type: REDUCER_TYPES.getUser, value: userData}));
         getProducts()
             .then(productsData => dispatch({ type: 'GET_PRODUCTS', value: productsData}));
         getUserHistory()
-            .then(userHistory => dispatch({ type: 'GET_USER_HISTORY', value: userHistory}));
+            .then(userHistory => dispatch({ type: REDUCER_TYPES.getUserHistory, value: userHistory}));
     }, []);
 
     return (

@@ -1,71 +1,41 @@
-import React, { useState } from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
 import RadioBtn from './RadioBtn';
 import './styles/DataFilter.css';
+import { FILTER_TYPES } from '../constants';
 
-const useStyles = makeStyles({
-    btn: {
-        color: '#7d7d7d',
-        borderRadius: '50px',
-        justifyContent: 'flex-end',
-        backgroundColor: '#cacaca',
-        textTransform: 'inherit',
-        fontWeight: 'normal',
-        margin: '0 10px'
-    },
-    btnActive: {
-        color: '#ffffff',
-        backgroundColor: '##15dbffß',
-    },
-    arrow: {
-        fill: '#cacaca'
-    }
-});
+const DataFilter = ({productLength, actualPage, onPageChange, onFilterChange}) => {
 
-const DataFilter = () => {
-
-    const classes = useStyles();
-    const [productFilter, setProductFilter] = useState(null);
-
-    let actualProd = 16;
-    let totalProd = 32;
-
-
-    const handleFilter = (e) => {
-        setProductFilter(e.target.value)
-    };
+    let actualProd = (actualPage === 1) ? productLength / 2 : productLength;
 
     return (
         <div className='data-filter'>
 
             <p className='text'>
                 <span className='text-total'>
-                    {actualProd} of {totalProd}</span>
+                    {actualProd} of {productLength}</span>
                 <span className='text-separator'>|</span>
                 <span className='text-sort'>Sort by:</span>
             </p>
 
             <div className='btn-wrap'>
-                <form className='form' onChange={handleFilter}>
+                <form className='form' onChange={onFilterChange}>
                     <RadioBtn
-                        radioId='mostRecent'
+                        radioId={FILTER_TYPES.mostRecent}
                         radioLabel='Most recent'/>
                     <RadioBtn
-                        radioId='lowestPrice'
+                        radioId={FILTER_TYPES.lowestPrice}
                         radioLabel='Lowest price'/>
                     <RadioBtn
-                        radioId='highestPrice'
+                        radioId={FILTER_TYPES.highestPrice}
                         radioLabel='Highest price'/>
                 </form>
             </div>
 
             <div className='nexpre-wrap'>
-                <IconButton>
-                    <PlayCircleOutlineIcon
-                        className={classes.arrow}/>
-                </IconButton>
+                <img className={`arrow ${(actualPage === 2) ? 'turned' : ''}`}
+                    src="../img/arrow-right.svg" 
+                    alt="arrow" 
+                    onClick={onPageChange}/>
             </div>
         </div>
     )

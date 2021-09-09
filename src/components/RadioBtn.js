@@ -9,7 +9,7 @@ const RadioBtn = ({radioLabel, radioId}) => {
                 type='radio' 
                 name='radioBtn' 
                 id={radioId} 
-                value={radioLabel}/>
+                value={radioId}/>
             <label 
                 htmlFor={radioId} 
                 name='radioBtn'>{
