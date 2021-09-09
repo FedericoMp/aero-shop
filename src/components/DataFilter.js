@@ -20,6 +20,7 @@ const DataFilter = ({productLength, actualPage, onPageChange, onFilterChange}) =
             <div className='btn-wrap'>
                 <form className='form' onChange={onFilterChange}>
                     <RadioBtn
+                        checked={true}
                         radioId={FILTER_TYPES.mostRecent}
                         radioLabel='Most recent'/>
                     <RadioBtn

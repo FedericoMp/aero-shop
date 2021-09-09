@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/RadioBtn.css';
 
-const RadioBtn = ({radioLabel, radioId}) => {
+const RadioBtn = ({radioLabel, radioId, checked}) => {
 
     return (
         <div className='radio-wrap'>
@@ -9,7 +9,8 @@ const RadioBtn = ({radioLabel, radioId}) => {
                 type='radio' 
                 name='radioBtn' 
                 id={radioId} 
-                value={radioId}/>
+                value={radioId}
+                defaultChecked={checked || null}/>
             <label 
                 htmlFor={radioId} 
                 name='radioBtn'>{
