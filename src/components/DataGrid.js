@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { FILTER_TYPES, PRODUCT_TO_SHOW } from '../constants';
 import localId from '../utils/localId';
+import GridCard from './GridCard';
 
 const useStyles = makeStyles({
     root: {
@@ -61,9 +62,7 @@ const DataGrid = ({filterType, actualPage, productToShow, productToList}) => {
     const loopGridItems = (arr) => arr.map(p => {
         return(
             <Grid item xs={12} sm={6} md={4} lg={3} key={`${localId()}${p.id}`}>
-                <Paper className={classes.paper}>
-                    Product {p.name} that costs ${p.cost}
-                </Paper>
+                <GridCard prodItem={p}/>
             </Grid>
         )
     });

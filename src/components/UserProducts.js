@@ -26,11 +26,16 @@ const UserProducts = () => {
     
     const classes = useStyles();
     // Use custom hook to take data from global state by reducer
-    const { history } = useAppContext();
+    const { user } = useAppContext();
+    const { redeemHistory } = user;
     const notProductMsj = `You don't have any product yet.`;
     
+    const takeFirsts = (arr, limit) => {
+        return arr.reverse().slice(0, limit);
+    }
+
     let table;
-    if(!history) {
+    if(!redeemHistory) {
         table = (
             <Typography 
                 variant='h5'
@@ -51,7 +56,7 @@ const UserProducts = () => {
                     </TableHead>
                     <TableBody>
                     {
-                        history.map((product) => (
+                        takeFirsts(redeemHistory, 5).map((product) => (
                             <TableRow key={localId()}>
                                 <TableCell component="th" scope="product">
                                     {product.name}
