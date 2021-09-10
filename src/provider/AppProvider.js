@@ -47,11 +47,13 @@ const AppProvider = ({children}) => {
     // Global state & dispatch function that sent actions to moddify state
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    // TODO - bug fix:
+    // When the user add points, the user data doesn't update
     useEffect(() => {
         getUser()
             .then(userData => dispatch({ type: REDUCER_TYPES.getUser, value: userData}));
         getProducts()
-            .then(productsData => dispatch({ type: 'GET_PRODUCTS', value: productsData}));
+            .then(productsData => dispatch({ type: REDUCER_TYPES.getProducts, value: productsData}));
         getUserHistory()
             .then(userHistory => dispatch({ type: REDUCER_TYPES.getUserHistory, value: userHistory}));
     }, []);

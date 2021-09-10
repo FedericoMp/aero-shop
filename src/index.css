@@ -35,3 +35,17 @@ img.profileImg {
     margin-top: 150px;
   }
 }
+
+/* FAB */
+div > .MuiFab-root {
+  color: #ffffff;
+  background-color: #fe7a00;
+}
+div > .MuiFab-root:hover {
+  background-color: #ea7202;
+}
+
+/* Main wrapper container */
+.main-wrapper {
+  margin-top: 55px;
+}

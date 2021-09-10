@@ -9,7 +9,7 @@ const AppMiddleware = () => {
         <AppProvider>
             <Router>
                 <Navbar/>
-                <main>
+                <main className='main-wrapper'>
                     <Switch>
                         <Route exact path='/'>
                             <Home/>

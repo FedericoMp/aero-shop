@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
     title: {
-        marginTop: '20px',
+        marginTop: '90px',
         marginBottom: '20px',
         color: '#ff7e00',
     }

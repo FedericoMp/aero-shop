@@ -8,7 +8,11 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
+        top: '0',
         flexGrow: 1,
+        zIndex: '1',
+        width: '100%',
+        position: 'fixed'
     },
     appbar: {
         backgroundColor: '#fff'
