@@ -9,6 +9,7 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        marginRight: '10px'
     },
     wrapper_name: {
         marginRight: '10px',

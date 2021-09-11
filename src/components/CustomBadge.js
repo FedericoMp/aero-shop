@@ -15,8 +15,10 @@ const useStyles = makeStyles({
         top: '10px',
         right: '10px',
         width: '150px',
+        height: '26px',
         display: 'flex',
         borderRadius: '50px',
+        alignItems: 'center',
         position: 'absolute',
         justifyContent: 'flex-end',
         backgroundColor: '#67676796'
@@ -25,7 +27,8 @@ const useStyles = makeStyles({
         color: 'white'
     },
     coin: {
-        width: '22px'
+        width: '22px',
+        margin: '1px 3px 0 5px'
     }
 });
 

@@ -24,7 +24,7 @@ export default function Profile() {
     
     useEffect(() => {
         provGetUser();
-    }, [])
+    }, []);
 
     return (
         <Container className={classes.container}>

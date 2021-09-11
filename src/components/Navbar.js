@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import UserInfo from './UserInfo';
 import { Link } from 'react-router-dom';
+import CartBadge from './CartBadge';
 
 const useStyles = makeStyles({
     root: {
@@ -45,8 +46,9 @@ const Navbar = () => {
                                 src="../img/aerolab-logo.svg" alt="Aero-Shop"/>
                         </Link>
                         <div className={classes.space}></div>
+                        <UserInfo/>
                         <Link to='/profile' className={classes.link}>
-                            <UserInfo/>
+                            <CartBadge/>
                         </Link>
                     </Toolbar>
                 </Container>
