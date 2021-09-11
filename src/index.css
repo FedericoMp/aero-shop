@@ -49,3 +49,9 @@ div > .MuiFab-root:hover {
 .main-wrapper {
   margin-top: 55px;
 }
+
+/* Snackbar */
+.MuiSnackbarContent-root {
+  display: flex;
+  justify-content: center;
+}

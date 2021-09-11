@@ -31,7 +31,7 @@ const CartBadge = () => {
             <ShopBadge badgeContent={(redeemHistory) 
                     ? redeemHistory.length : ''}
                     showZero
-                    max={99}>
+                    max={25}>
                 <ShoppingCartIcon />
             </ShopBadge>
         </IconButton>

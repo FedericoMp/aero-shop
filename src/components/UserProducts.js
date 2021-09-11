@@ -13,6 +13,8 @@ import { localId } from '../utils';
 import RadioBtn from './RadioBtn';
 import { FILTER_PROFILE } from '../constants';
 import './styles/UserProducts.css';
+import Switch from '@material-ui/core/Switch';
+import { withStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     table: {
@@ -24,6 +26,20 @@ const useStyles = makeStyles({
     }
 });
 
+const CustomSwitch = withStyles({
+    switchBase: {
+      color: '#ffab5f',
+      '&$checked': {
+        color: '#fe7a02',
+      },
+      '&$checked + $track': {
+        backgroundColor: '#fe7a02',
+      },
+    },
+    checked: {},
+    track: {},
+  })(Switch);
+
 const UserProducts = ({data}) => {
 
     const { redeemHistory } = data;
@@ -31,17 +47,13 @@ const UserProducts = ({data}) => {
     const notProductMsj = `You don't have any product yet.`;
 
     const [productFilter, setProductFilter] = useState(FILTER_PROFILE.takeFive);
-    const [reversedArr, setReversedArr] = useState(false);
+    const [switchState, setSwitchState] = useState(false);
     
     const onFilterChange = (e) => {
         setProductFilter(e.target.value);
     }
 
     const applyFilters = (historyArr) => {
-        if(!reversedArr) {
-            historyArr.reverse();
-            setReversedArr(true);
-        }
         switch (productFilter) {
             case FILTER_PROFILE.takeFive: 
                 return historyArr.slice(0, 5);
@@ -97,6 +109,17 @@ const UserProducts = ({data}) => {
         );
     }
 
+    const handleChange = () => {
+        if(switchState) {
+            setSwitchState(false);
+            redeemHistory.reverse();
+        } else {
+            setSwitchState(true);
+            redeemHistory.reverse();
+
+        }
+    };
+
     return (
         <div className='productsContainer'>
             <div className='btn-wrap'>
@@ -112,6 +135,15 @@ const UserProducts = ({data}) => {
                         radioId={FILTER_PROFILE.takeAll}
                         radioLabel='Show all products'/>
                 </form>
+                <div className='toggle-wrap'>
+                    <Typography variant='subtitle1'>
+                        {switchState ? 'Last Redeem' : 'First Redeem'}
+                    </Typography>
+                    <CustomSwitch
+                        checked={switchState}
+                        onChange={handleChange}
+                        name="switch"/>
+                </div>
             </div>
             { table }
         </div>

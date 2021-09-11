@@ -3,6 +3,7 @@ div.btn-wrap {
     display: flex;
     flex-direction: row;
     margin: 20px 0;
+    align-items: center;
 }
 
 div.btn-wrap > form.form {
@@ -11,4 +12,21 @@ div.btn-wrap > form.form {
 
 div.btn-wrap > form.form > div.radio-wrap:nth-child(2n) {
     margin: 0 10px;
+}
+
+.toggle-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 668px) {
+    div.btn-wrap {
+        flex-direction: column;
+    }
+}
+
+.toggle-wrap > .MuiSwitch-root > .MuiSwitch-track {
+    background-color: #ff9800!important;
 }

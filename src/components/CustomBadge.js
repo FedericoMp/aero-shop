@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
     wrapper_points: {
-        width: '75px',
+        width: '87px',
         display: 'flex',
         padding: '3px 8px',
         borderRadius: '50px',
