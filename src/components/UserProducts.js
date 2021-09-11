@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,6 +10,9 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { localId } from '../utils';
+import RadioBtn from './RadioBtn';
+import { FILTER_PROFILE } from '../constants';
+import './styles/UserProducts.css';
 
 const useStyles = makeStyles({
     table: {
@@ -27,8 +30,28 @@ const UserProducts = ({data}) => {
     const classes = useStyles();
     const notProductMsj = `You don't have any product yet.`;
 
-    const takeFirsts = (arr, limit) => {
-        return arr.reverse().slice(0, limit);
+    const [productFilter, setProductFilter] = useState(FILTER_PROFILE.takeFive);
+    const [reversedArr, setReversedArr] = useState(false);
+    
+    const onFilterChange = (e) => {
+        setProductFilter(e.target.value);
+    }
+
+    const applyFilters = (historyArr) => {
+        if(!reversedArr) {
+            historyArr.reverse();
+            setReversedArr(true);
+        }
+        switch (productFilter) {
+            case FILTER_PROFILE.takeFive: 
+                return historyArr.slice(0, 5);
+            
+            case FILTER_PROFILE.takeTen: 
+                return historyArr.slice(0, 10);
+            
+            case FILTER_PROFILE.takeAll: 
+                return historyArr;
+        }
     }
 
     let table;
@@ -53,7 +76,7 @@ const UserProducts = ({data}) => {
                     </TableHead>
                     <TableBody>
                     {
-                        takeFirsts(redeemHistory, 5).map((product) => (
+                        applyFilters(redeemHistory).map((product) => (
                             <TableRow key={localId()}>
                                 <TableCell component="th" scope="product">
                                     {product.name}
@@ -76,6 +99,20 @@ const UserProducts = ({data}) => {
 
     return (
         <div className='productsContainer'>
+            <div className='btn-wrap'>
+                <form className='form' onChange={onFilterChange}>
+                    <RadioBtn
+                        checked={true}
+                        radioId={FILTER_PROFILE.takeFive}
+                        radioLabel='Show 5 products'/>
+                    <RadioBtn
+                        radioId={FILTER_PROFILE.takeTen}
+                        radioLabel='Show 10 products'/>
+                    <RadioBtn
+                        radioId={FILTER_PROFILE.takeAll}
+                        radioLabel='Show all products'/>
+                </form>
+            </div>
             { table }
         </div>
     )

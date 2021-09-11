@@ -17,8 +17,15 @@ const PRODUCT_TO_SHOW = {
     all: 'all',
 };
 
+const FILTER_PROFILE = {
+    takeFive: 'takeFive', 
+    takeTen: 'takeTen',
+    takeAll: 'takeAll'
+};
+
 export {
     REDUCER_TYPES,
     FILTER_TYPES,
-    PRODUCT_TO_SHOW
+    PRODUCT_TO_SHOW,
+    FILTER_PROFILE
 }
