@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import ProfileInfo from '../components/ProfileInfo';
 import UserProducts from '../components/UserProducts';
 import { makeStyles } from '@material-ui/core';
+import { useAppContext } from '../provider/AppProvider';
 
 const useStyles = makeStyles({
     title: {
@@ -19,14 +20,19 @@ const useStyles = makeStyles({
 export default function Profile() {
 
     const classes = useStyles();
+    const { user, provGetUser } = useAppContext();
+    
+    useEffect(() => {
+        provGetUser();
+    }, [])
 
     return (
         <Container className={classes.container}>
             <Typography
                 className={classes.title}
                 variant='h4'>Profile</Typography>
-                <ProfileInfo/>
-                <UserProducts/>
+                <ProfileInfo data={user}/>
+                <UserProducts data={user}/>
         </Container>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Banner from '../components/Banner';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,7 +10,6 @@ import AddIcon from '@material-ui/icons/Add';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
-import postUserPoints from '../middleware/requests/postUserPoints';
 
 const useStyles = makeStyles({
     root: {
@@ -71,10 +70,14 @@ const useStyles = makeStyles({
 export default function Home() {
 
     const classes = useStyles();
-    const { products } = useAppContext();
+    const { products, provGetProducts, provPostUserPoints } = useAppContext();
     const [productFilter, setProductFilter] = useState(null);
     const [page, setPage] = useState(1);
     const [openModal, setOpenModal] = useState(false);
+
+    useEffect(() => {
+        provGetProducts();
+    }, [])
 
     const handleFilter = (e) => {
         setProductFilter(e.target.value)
@@ -89,8 +92,7 @@ export default function Home() {
 
     const handlePoints = (points) => {
         handleCloseModal();
-        postUserPoints(points)
-            .then(res => console.log(res));
+        provPostUserPoints(points);
     }
 
     const body = (

@@ -4,7 +4,6 @@ import Typography from '@material-ui/core/Typography';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import { makeStyles } from '@material-ui/core';
 import { nameInitial, parseDate } from '../utils';
-import { useAppContext } from '../provider/AppProvider';
 
 const useStyles = makeStyles({
     root: {
@@ -44,12 +43,10 @@ const useStyles = makeStyles({
     }
 });
 
-const ProfileInfo = () => {
+const ProfileInfo = ({data}) => {
 
+    const { name, points, createDate } = data;
     const classes = useStyles();
-    // Use custom hook to take data from global state by reducer
-    const { user } = useAppContext();
-    const { name, points, createDate } = user;
 
     return (
         <div className={classes.root}>

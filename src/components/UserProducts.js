@@ -9,7 +9,6 @@ import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { useAppContext } from '../provider/AppProvider';
 import { localId } from '../utils';
 
 const useStyles = makeStyles({
@@ -22,14 +21,12 @@ const useStyles = makeStyles({
     }
 });
 
-const UserProducts = () => {
-    
+const UserProducts = ({data}) => {
+
+    const { redeemHistory } = data;
     const classes = useStyles();
-    // Use custom hook to take data from global state by reducer
-    const { user } = useAppContext();
-    const { redeemHistory } = user;
     const notProductMsj = `You don't have any product yet.`;
-    
+
     const takeFirsts = (arr, limit) => {
         return arr.reverse().slice(0, limit);
     }

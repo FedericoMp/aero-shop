@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Popover from '@material-ui/core/Popover';
+import { useAppContext } from '../provider/AppProvider';
 import './styles/GridCard.css';
-import { postRedeem } from '../middleware/requests';
+import CustomBadge from './CustomBadge';
 
 const GridCard = ({prodItem}) => {
     
     const {_id, name, category, cost, img } = prodItem;
     const [anchorEl, setAnchorEl] = useState(null);
+    const { user, provPostRedeem } = useAppContext();
+    const { points } = user;
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -24,14 +27,14 @@ const GridCard = ({prodItem}) => {
     const open = Boolean(anchorEl);
     const popOverId = open ? 'simple-popover' : undefined;
 
-    const handleRedeemProduct = (productId) => {
+    const handleRedeemProduct = (productId, productCost) => {
         handleClose();
-        postRedeem(productId)
-            .then(res => {console.log(res)})
+        provPostRedeem(productId, productCost);
     };
 
     const cardDefault = () => {
-        return (<div className='card-default' 
+        let cardPointFilter = (cost < points)
+            ? (<div className='card-default' 
                     aria-describedby={popOverId}
                     onClick={handleClick}>
                     <img className='card-buy-icon'
@@ -56,6 +59,30 @@ const GridCard = ({prodItem}) => {
                         </Typography>
                     </CardContent>
                 </div>)
+            : (<div aria-describedby={popOverId}>
+                    <CustomBadge
+                        label={`You need ${cost - points}`}/>
+                    <CardMedia
+                        className='card-media'
+                        image={img.url}
+                        title={name}/>
+                    <CardContent 
+                        className='card-default-content'>
+                        <Typography 
+                            className='card-category'
+                            variant='caption'
+                            gutterBottom>
+                            {category}
+                        </Typography>
+                        <Typography
+                            className='card-title'
+                            variant='subtitle1'
+                            gutterBottom>
+                            {name}
+                        </Typography>
+                    </CardContent>
+                </div>);
+        return cardPointFilter;
     }
 
     const cardOver = () => {
@@ -76,7 +103,7 @@ const GridCard = ({prodItem}) => {
                         </div>
                         <Button 
                             size='small'
-                            onClick={() => handleRedeemProduct(_id)}
+                            onClick={() => handleRedeemProduct(_id, cost)}
                             className='redeem-btn'>
                                 Redeem now</Button>
                     </CardContent>

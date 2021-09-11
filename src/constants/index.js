@@ -1,7 +1,9 @@
 const REDUCER_TYPES = {
     getUser: 'GET_USER',
     getProducts: 'GET_PRODUCTS',
-    getUserHistory: 'GET_USER_HISTORY'
+    getUserHistory: 'GET_USER_HISTORY',
+    postUserPoints: 'POST_USER_POINTS',
+    postRedeem: 'POST_REDEEM'
 };
 
 const FILTER_TYPES = {
