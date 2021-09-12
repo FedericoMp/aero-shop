@@ -14,7 +14,6 @@ img.profileImg {
   right: 0px;
   bottom: -30px;
   width: 360px;
-  z-Index: -2;
 }
 .productsContainer {
   margin-top: 50px;
@@ -22,7 +21,7 @@ img.profileImg {
 }
 @media screen and (max-width: 600px) {
   img.profileImg {
-    top: 10px;
+    top: -50px;
     right: -10px;
   }
 }
@@ -54,4 +53,9 @@ div > .MuiFab-root:hover {
 .MuiSnackbarContent-root {
   display: flex;
   justify-content: center;
+}
+
+/* Root */
+html, body, #root {
+  background-color: #fbfbfb;
 }

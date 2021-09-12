@@ -136,7 +136,7 @@ const UserProducts = ({data}) => {
                         radioLabel='Show all products'/>
                 </form>
                 <div className='toggle-wrap'>
-                    <Typography variant='subtitle1'>
+                    <Typography variant='subtitle1' className='switch-label'>
                         {switchState ? 'Last Redeem' : 'First Redeem'}
                     </Typography>
                     <CustomSwitch

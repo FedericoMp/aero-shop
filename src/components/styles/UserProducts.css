@@ -30,3 +30,7 @@ div.btn-wrap > form.form > div.radio-wrap:nth-child(2n) {
 .toggle-wrap > .MuiSwitch-root > .MuiSwitch-track {
     background-color: #ff9800!important;
 }
+
+.switch-label {
+    color: #7d7d7d;
+}

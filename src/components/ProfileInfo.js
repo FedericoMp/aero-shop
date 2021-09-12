@@ -20,6 +20,9 @@ const useStyles = makeStyles({
         marginRight: '10px',
         backgroundColor: '#ff7e00',
     },
+    colorGrey: {
+        color: '#7d7d7d'
+    },
     dateWrap: {
         display: 'flex',
         marginBottom: '10px',
@@ -56,7 +59,7 @@ const ProfileInfo = ({data}) => {
                     ? <Avatar className={classes.avatar}>{nameInitial(name)}</Avatar>
                     : null
                 }
-                <Typography variant='h5'>{name}</Typography>
+                <Typography className={classes.colorGrey} variant='h5'>{name}</Typography>
             </div>
 
             <div className={classes.dateWrap}>
@@ -64,7 +67,7 @@ const ProfileInfo = ({data}) => {
                     variant='caption' 
                     className={classes.captionDate}>
                         Created at</Typography>
-                <Typography variant='subtitle2'>{parseDate(createDate)}</Typography>
+                <Typography className={classes.colorGrey} variant='subtitle2'>{parseDate(createDate)}</Typography>
             </div>
 
             <div className={classes.pointsWrap}>
@@ -74,7 +77,7 @@ const ProfileInfo = ({data}) => {
                         You have</Typography>
                 <MonetizationOnIcon 
                     className={classes.coin}/>
-                <Typography variant="body1">{points}</Typography>
+                <Typography className={classes.colorGrey} variant="body1">{points}</Typography>
             </div>
 
             <img className='profileImg'
