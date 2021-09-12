@@ -97,7 +97,7 @@ export default function Home() {
 
     const body = (
         <div className={classes.modalBody}>
-            <h2 className={classes.modalTitle}>Choice the amount</h2>
+            <h2 className={classes.modalTitle}>Choose the amount</h2>
             <Button 
                 variant='outlined'
                 className={classes.btn}

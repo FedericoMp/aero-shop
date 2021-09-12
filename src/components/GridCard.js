@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Popover from '@material-ui/core/Popover';
 import { useAppContext } from '../provider/AppProvider';
 import './styles/GridCard.css';
 import CustomBadge from './CustomBadge';
@@ -12,31 +11,14 @@ import CustomBadge from './CustomBadge';
 const GridCard = ({prodItem}) => {
     
     const {_id, name, category, cost, img } = prodItem;
-    const [anchorEl, setAnchorEl] = useState(null);
     const { user, provPostRedeem } = useAppContext();
     const { points } = user;
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const open = Boolean(anchorEl);
-    const popOverId = open ? 'simple-popover' : undefined;
-
-    const handleRedeemProduct = (productId, productCost) => {
-        handleClose();
-        provPostRedeem(productId, productCost);
-    };
+    const handleRedeemProduct = (productId, productCost) => provPostRedeem(productId, productCost);
 
     const cardDefault = () => {
         let cardPointFilter = (cost < points)
-            ? (<div className='card-default' 
-                    aria-describedby={popOverId}
-                    onClick={handleClick}>
+            ? (<div className='card-default'>
                     <img className='card-buy-icon'
                         src="../img/buy-blue.svg" alt="Buy icon" />
                     <CardMedia
@@ -59,7 +41,7 @@ const GridCard = ({prodItem}) => {
                         </Typography>
                     </CardContent>
                 </div>)
-            : (<div aria-describedby={popOverId}>
+            : (<div className='card-nopoints'>
                     <CustomBadge
                         label={`You need ${cost - points}`}/>
                     <CardMedia
@@ -67,7 +49,7 @@ const GridCard = ({prodItem}) => {
                         image={img.url}
                         title={name}/>
                     <CardContent 
-                        className='card-default-content'>
+                        className='card-nopoints-content'>
                         <Typography 
                             className='card-category'
                             variant='caption'
@@ -85,12 +67,10 @@ const GridCard = ({prodItem}) => {
         return cardPointFilter;
     }
 
-    const cardOver = () => {
-        return (<div className='card-over'>
-                    <img className='card-buy-icon'
+    const cardHover = () => {
+        return (<div className='card-hover'>
+                    <img className='hover-card-buy-icon'
                         src="../img/buy-white.svg" alt="Buy icon" />
-                    <CardContent
-                        className='card-over-content'>
                         <div className='coin-wrap'>
                             <img className='card-coin-icon'
                                 src="../img/coin.svg" alt="Coin" />
@@ -106,29 +86,13 @@ const GridCard = ({prodItem}) => {
                             onClick={() => handleRedeemProduct(_id, cost)}
                             className='redeem-btn'>
                                 Redeem now</Button>
-                    </CardContent>
                 </div>)
     }
 
     return (
         <Card className='card-container'>
             { cardDefault() }
-            <Popover
-                id={popOverId}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'center',
-                }}
-                transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'center',
-                }}
-            >
-                { cardOver() }
-            </Popover>
+            { cardHover() }
         </Card>
     )
 }
